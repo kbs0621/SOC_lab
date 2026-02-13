@@ -1,0 +1,25 @@
+filebeat.inputs:
+
+- type: filestream
+  id: ufw-log
+  enabled: true
+  paths:
+    - /var/log/ufw.log
+
+- type: filestream
+  id: auth-log
+  enabled: true
+  paths:
+    - /var/log/auth.log
+
+- type: filestream
+  id: apache-log
+  enabled: true
+  paths:
+    - /var/log/apache2/access.log
+
+output.elasticsearch:
+  hosts: ["http://localhost:9200"]
+
+setup.kibana:
+  host: "http://localhost:5601"
